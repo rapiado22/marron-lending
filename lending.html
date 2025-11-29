@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MarRon Lending</title>
+
+  <style>
+    /* ==== Global Styles ==== */
+    :root {
+      --main-blue: #004aad;
+      --light-blue: #e9f1ff;
+      --white: #ffffff;
+      --gray: #555;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--light-blue);
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ==== Header ==== */
+    .site-header {
+      background: var(--main-blue);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 15px;
+    }
+
+    .site-header .site-title {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .site-header .site-subtitle {
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    /* ==== Layout Containers ==== */
+    .container {
+      width: 90%;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ==== Form Section ==== */
+    .form-section {
+      background: var(--white);
+      margin-top: 30px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: var(--main-blue);
+      margin-bottom: 20px;
+    }
+
+    /* ==== Form Elements ==== */
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: 600;
+      color: var(--main-blue);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--main-blue);
+      box-shadow: 0 0 4px rgba(0,74,173,0.3);
+    }
+
+    .hint {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    /* ==== Terms and Conditions ==== */
+    .form-terms {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terms-label {
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    .terms-link {
+      color: var(--main-blue);
+      text-decoration: none;
+    }
+
+    .terms-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ==== Submit Button ==== */
+    .btn-submit {
+      background: var(--main-blue);
+      color: var(--white);
+      border: none;
+      padding: 12px 0;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background: #003781;
+    }
+
+    /* ==== Terms Section ==== */
+    .terms-section {
+      background: var(--white);
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .terms-section h2 {
+      color: var(--main-blue);
+      text-align: center;
+    }
+
+    .terms-box {
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 0.9rem;
+    }
+
+    /* ==== Footer ==== */
+    .site-footer {
+      text-align: center;
+      background: var(--main-blue);
+      color: var(--white);
+      padding: 25px 15px;
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    .site-footer a {
+      color: #cfe2ff;
+      text-decoration: none;
+    }
+
+    .site-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==== Responsive Design ==== */
+    @media (max-width: 600px) {
+      .form-section, .terms-section {
+        padding: 20px;
+      }
+
+      .btn-submit {
+        font-size: 0.95rem;
+      }
+
+      .site-header .site-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title">MarRon Lending</h1>
+      <p class="site-subtitle">Fast and reliable cash loans from ₱500 to ₱10,000</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <h2>Loan Application Form</h2>
+
+      <form id="loanForm" enctype="multipart/form-data">
+        <div class="form-row">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" required placeholder="Juan Dela Cruz" />
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" required
+                 placeholder="0917xxxxxxx" pattern="^(09|\+639)\d{2}[- ]?\d{3}[- ]?\d{4}$"
+                 title="Enter a valid Philippine mobile number" />
+        </div>
+
+        <div class="form-row">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" rows="2" required placeholder="House no., Street, Barangay, City/Province"></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="loanAmount">Loan Amount (₱500 - ₱10,000)</label>
+          <input id="loanAmount" name="loanAmount" type="number" required min="500" max="10000" step="1" />
+        </div>
+<div class="form-row">
+  <label for="repaymentMonth">Repayment Duration</label>
+  <select id="repaymentMonth" name="repaymentMonth" required>
+    <option value="">Select duration</option>
+    <option value="1">1 Month</option>
+    <option value="2">2 Months</option>
+    <option value="3">3 Months</option>
+  </select>
+</div>
+        <div class="form-row">
+          <label for="validID">Upload Valid ID (photo or PDF)</label>
+          <input id="validID" name="validID" type="file" accept="image/*,.pdf" required />
+        </div>
+
+        <div class="form-row form-terms">
+          <input id="agree" name="agree" type="checkbox" required />
+          <label for="agree" class="terms-label">
+            I have read and agree to the
+            <a href="#terms" class="terms-link">Terms and Conditions</a>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="btn-submit">Submit Application</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="terms" class="terms-section" aria-live="polite">
+      <h2>Terms and Conditions</h2>
+      <div class="terms-box" role="document">
+        <p><strong>Interest Rate:</strong> 20% per loan cycle.</p>
+        <p><strong>Late Fee:</strong> 5% of outstanding balance.</p>
+        <p>Applicants must be at least 18 years old and provide a valid ID and proof of income. Loan approval is subject to verification. Repayments accepted via bank transfer, GCash, Maya, or in person at our store.</p>
+        <p>Failure to pay on time may result in additional fees and collection action. MarRon Lending reserves the right to update these terms. By submitting this form you consent to MarRon Lending's processing of your personal data under our Privacy Policy.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>Contact Us</strong><br />
+      Email: <a href="mailto:marron102214@gmail.com">marron102214@gmail.com</a><br />
+      Address: 1170 Maycacayan St. Sitio Mambalon, Mahabang Parang, Binangonan, Rizal</p>
+      <p>&copy; <span id="year"></span> MarRon Lending. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.getElementById("loanForm");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwXWKrUVvcN4Y-ELtgos7hLiJu2oOIpLMP7AWtgBvZiPc-ri4Ozm4RaPwGzOnW2bD6HNg/exec"; // <-- Replace with your deployed Google Apps Script URL
+
+      try {
+        const response = await fetch(scriptURL, { method: "POST", body: formData });
+        const result = await response.json();
+
+        if (result.result === "success") {
+          alert("Your application is complete and under verification. Please wait 24–48 hours for the status of your loan.");
+          form.reset();
+        } else {
+          alert("Something went wrong. Please try again later.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Unable to submit. Please check your internet connection or try again later.");
+      }
+    });
+  </script>
+</body>
+</html>
